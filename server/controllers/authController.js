@@ -12,7 +12,7 @@ const generateToken = (id, role) => {
 
 exports.register = async (req, res) => {
     try {
-        const { name, email, password, role } = req.body;
+        const { name, email, password } = req.body;
         let user = await User.findOne({ email });
         if (user) return res.status(400).json({ message: 'User already exists' });
 
@@ -88,7 +88,7 @@ exports.verifyOTP = async (req, res) => {
             role: user.role,
             token: generateToken(user.id, user.role)
         });
-    } catch (error) {
+    } catch {
         res.status(500).json({ message: 'Server Error' });
     }
 };

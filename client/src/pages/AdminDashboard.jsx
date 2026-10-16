@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import api from '../utils/axios';
 import { useNavigate } from 'react-router-dom';
@@ -55,7 +55,7 @@ const AdminDashboard = () => {
             try {
                 await api.delete(`/events/${id}`);
                 fetchData();
-            } catch (error) {
+            } catch {
                 alert('Error deleting event');
             }
         }
